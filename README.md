@@ -46,12 +46,12 @@ private static final String PASS = "sua-senha";
 ### Testando as Requisições
 1. Execute a classe `Main`.
 2. Abra o Postman.
-3. Importe a coleção de requisições fornecida neste repositório (collection.json).
+3. Importe a coleção de requisições fornecida neste repositório (API Challenge.postman_collection.json).
 Certifique-se de configurar as variáveis de ambiente no Postman com os valores adequados (URL base da API, por exemplo).
 4. Execute as requisições e verifique as respostas para garantir que o projeto está funcionando corretamente.
 
 ## Agradecimento
 
-Obrigado por conferir nosso projeto! Esperamos que ele seja útil para você. Se tiver alguma dúvida ou sugestão, não hesite em entrar em contato conosco.
+Obrigada por conferir nosso projeto! Espero que ele seja útil para você. Se tiver alguma dúvida ou sugestão, não hesite em entrar em contato conosco.
 
 ---
