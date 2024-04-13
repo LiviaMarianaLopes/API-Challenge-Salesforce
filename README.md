@@ -6,17 +6,18 @@
 <p align="center">
  <a href="#objetivo">Objetivo</a> •
  <a href="#funcionalidades">Funcionalidades</a> • 
- <a href="#executar">Como Executar</a>
+ <a href="#executar">Como Executar</a> • 
+ <a href="#agradecimento">Agradecimento</a>
 </p>
 
-## 💻 Sobre o Projeto
+## <a id="objetivo">  💻 Sobre o Projeto </a>
 O projeto foi desenvolvido com o propósito de criar uma API REST em Java, destinada a ser utilizada como backend no Challenge Salesforce. Esta é a terceira Sprint do Challenge da Salesforce, fornecido pela instituição FIAP.
 
-## ⚙️ Funcionalidades
+## <a id="funcionalidades">⚙️ Funcionalidades </a>
 - [x] Requisições GET, POST, PUT e DELETE para a entidade USER
 - [x] Conexão com o banco de dados
 
-## 🚀 Como Executar
+## <a id="executar"> 🚀 Como Executar </a>
 ### Pré-requisitos
 
 - Java JDK instalado na sua máquina
@@ -50,7 +51,7 @@ private static final String PASS = "sua-senha";
 Certifique-se de configurar as variáveis de ambiente no Postman com os valores adequados (URL base da API, por exemplo).
 4. Execute as requisições e verifique as respostas para garantir que o projeto está funcionando corretamente.
 
-## Agradecimento
+## <a id="agradecimento"> 🤝Agradecimento </a>
 
 Obrigada por conferir nosso projeto! Espero que ele seja útil para você. Se tiver alguma dúvida ou sugestão, não hesite em entrar em contato conosco.
 
