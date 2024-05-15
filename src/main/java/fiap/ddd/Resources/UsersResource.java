@@ -53,7 +53,7 @@ public class UsersResource {
     public Response update(@PathParam("id") int id, User user){
         try{
             userService.update(id, user);
-            return Response.status(Response.Status.NO_CONTENT).build();
+            return Response.ok().build();
         }
         catch(IllegalArgumentException e){
             return Response.status(Response.Status.BAD_REQUEST).entity(e.getMessage()).build();

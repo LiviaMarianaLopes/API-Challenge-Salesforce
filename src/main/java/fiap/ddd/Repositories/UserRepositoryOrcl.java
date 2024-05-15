@@ -1,5 +1,6 @@
 package fiap.ddd.Repositories;
 
+import fiap.ddd.Entities.Login;
 import fiap.ddd.Infrastructure.DatabaseConfig;
 import fiap.ddd.Entities.User;
 
@@ -21,13 +22,13 @@ public class UserRepositoryOrcl implements _BaseRepository <User>{
     public static final String EMPRESA_COLUMN = "EMPRESA";
     public static  final String TB_NAME = "USERS";
 
-    public boolean verificarLogin(String username, String senha) {
+    public boolean verificarLogin(Login login) {
         for (User l : readAll()) {
 
             //Verifica se o username inserido é igual ao nome de usuário ou email cadastrado
-            if (l.getEmail().equals(username)) {
+            if (l.getEmail().equals(login.getEmail())) {
                 //Verifica se a senha inserida corresponde a senha cadastrada
-                if (l.getSenha().equals(senha)) {
+                if (l.getSenha().equals(login.getSenha())) {
                     return true;
 
                 }
@@ -36,11 +37,11 @@ public class UserRepositoryOrcl implements _BaseRepository <User>{
         }
         return false;
     }
-    public User saberLogin(String email, String senha) {
+    public User saberLogin(Login login) {
         for (User l : readAll()) {
 
-            if (l.getEmail().equals(email)) {
-                if (l.getSenha().equals(senha)) {
+            if (l.getEmail().equals(login.getEmail())) {
+                if (l.getSenha().equals(login.getSenha())) {
 
                     //retorna o Entities.Login que corresponde ao username e senha inseridos
                     return l;

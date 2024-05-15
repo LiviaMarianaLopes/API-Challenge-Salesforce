@@ -1,5 +1,6 @@
 package fiap.ddd;
 
+import fiap.ddd.Entities.Login;
 import fiap.ddd.Entities.User;
 import fiap.ddd.Repositories.UserRepositoryOrcl;
 
@@ -44,10 +45,11 @@ public class MainAcessoCrud {
                             String username = scanner.nextLine();
                             System.out.println("Digite a senha: ");
                             String senha = scanner.nextLine();
+                            var login = new Login(username, senha);
                             //Verifica o login usando o método verificarLogin
-                            if (users.verificarLogin(username, senha)) {
+                            if (users.verificarLogin(login)) {
                                 //Salva em uma variável o login que foi logado
-                                User userLogado = (users.saberLogin(username, senha));
+                                User userLogado = (users.saberLogin(login));
                                 System.out.println("Entities.Login efetuado com sucesso");
 
                                 while (true) {
