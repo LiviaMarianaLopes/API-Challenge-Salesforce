@@ -1,7 +1,7 @@
 <h1 align="center">API Challenge Java</h1>
 <h2 align="center">API REST integrada com o Banco de Dados</h2>
 <h4 align="center">
-	🚧 Em Construção 🚀 🚧
+	Concluído 🚀
 </h4>
 <p align="center">
  <a href="#objetivo">Objetivo</a> •
@@ -11,11 +11,12 @@
 </p>
 
 ## <a id="objetivo">  💻 Sobre o Projeto </a>
-O projeto foi desenvolvido com o propósito de criar uma API REST em Java, destinada a ser utilizada como backend no Challenge Salesforce. Esta é a terceira Sprint do Challenge da Salesforce, fornecido pela instituição FIAP.
+O projeto foi desenvolvido com o propósito de criar uma API REST em Java, destinada a ser utilizada como backend no Challenge Salesforce. 
 
 ## <a id="funcionalidades">⚙️ Funcionalidades </a>
 - [x] Requisições GET, POST, PUT e DELETE para a entidade USER
 - [x] Conexão com o banco de dados
+- [x] Validação de login
 
 ## <a id="executar"> 🚀 Como Executar </a>
 ### Pré-requisitos
@@ -28,21 +29,6 @@ O projeto foi desenvolvido com o propósito de criar uma API REST em Java, desti
 1. Clone este repositório para o seu ambiente local.
 2. Abra o projeto na sua IDE de preferência.
 3. Certifique-se de que todas as dependências estão instaladas e atualizadas.
-
-
-
-### Configuração do Banco de Dados
-
-1. Abra a classe `DatabaseConfig` localizada em `src/main/java/fiap/ddd/Infrastructure`.
-2. Insira suas credenciais do banco de dados nas variáveis `URL`, `USER` e `PASS`.
-
-```java
-private static final String URL = "jdbc:mysql://localhost:3306/nome-do-banco";
-private static final String USER = "seu-usuario";
-private static final String PASS = "sua-senha";
-```
-3. Execute a classe `DatabaseInitialization` localizada em `src/main/java/fiap/ddd/Infrastructure`.
-
 
 ### Testando as Requisições
 1. Execute a classe `Main`.
