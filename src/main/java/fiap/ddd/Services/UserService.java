@@ -7,7 +7,8 @@ import java.util.Objects;
 
 public class UserService {
     private UserRepositoryOrcl userRepository;
-    public UserService(){
+
+    public UserService() {
         userRepository = new UserRepositoryOrcl();
     }
 
@@ -29,10 +30,19 @@ public class UserService {
     }
 
 
-    public void update(int id, User user){
+    public void update(int id, User user) {
+        var users = userRepository.readAll();
+        for (User u : users) {
+            if (Objects.equals(u.getEmail(), user.getEmail())) {
+                if (u.getId() != id) {
+                    throw new IllegalArgumentException("Email inválido");
+                }
+            }
+
+        }
         var validation = user.validate();
 
-        if(validation.containsKey(false))
+        if (validation.containsKey(false))
             throw new IllegalArgumentException(validation.get(false).toString());
         else
             userRepository.update(id, user);

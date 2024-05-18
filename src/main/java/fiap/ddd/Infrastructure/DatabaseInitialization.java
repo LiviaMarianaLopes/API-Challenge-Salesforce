@@ -13,7 +13,7 @@ public class DatabaseInitialization {
                         "id NUMBER(12) GENERATED ALWAYS AS IDENTITY PRIMARY KEY," +
                         "nome VARCHAR2(255) NOT NULL," +
                         "email VARCHAR2(255) NOT NULL UNIQUE," +
-                        "senha VARCHAR2(255) NOT NULL,"+
+                        "senha VARCHAR2(255) NOT NULL," +
                         "telefone VARCHAR2(255) NOT NULL," +
                         "empresa VARCHAR2(255) NOT NULL" +
                         ")";
@@ -29,9 +29,8 @@ public class DatabaseInitialization {
             System.out.println("Erro ao criar a tabela: " + e.getMessage());
         }
     }
-    public static void dropTable()
 
-    {
+    public static void dropTable() {
         try (Connection conn = DatabaseConfig.getConnection();
              Statement stmt = conn.createStatement()
         ) {
@@ -42,6 +41,7 @@ public class DatabaseInitialization {
             e.printStackTrace();
         }
     }
+
     public static void main(String[] args) {
         initialize();
     }

@@ -14,21 +14,22 @@ import java.util.List;
 public class UsersResource {
     public UserService userService;
     public UserRepositoryOrcl userRepositoryOrcl;
-    public UsersResource(){
+
+    public UsersResource() {
         userService = new UserService();
         userRepositoryOrcl = new UserRepositoryOrcl();
     }
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<User> getAll(){
+    public List<User> getAll() {
         return userRepositoryOrcl.readAll();
     }
 
     @GET
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response get(@PathParam("id") int id){
+    public Response get(@PathParam("id") int id) {
         var user = userRepositoryOrcl.getUserById(id);
         return user.isPresent() ?
                 Response.ok(user.get()).build() :
@@ -37,12 +38,11 @@ public class UsersResource {
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response create(User user){
-        try{
+    public Response create(User user) {
+        try {
             userService.create(user);
             return Response.status(Response.Status.CREATED).entity("Cadastro realizado com sucesso!").build();
-        }
-        catch(IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             return Response.status(Response.Status.BAD_REQUEST).entity(e.getMessage()).build();
         }
     }
@@ -50,20 +50,25 @@ public class UsersResource {
     @PUT
     @Path("{id}")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response update(@PathParam("id") int id, User user){
-        try{
+    public Response update(@PathParam("id") int id, User user) {
+        try {
             userService.update(id, user);
-            return Response.ok().build();
-        }
-        catch(IllegalArgumentException e){
+            return Response.ok().entity("Dados atualizados com sucesso!").build();
+        } catch (IllegalArgumentException e) {
             return Response.status(Response.Status.BAD_REQUEST).entity(e.getMessage()).build();
         }
     }
 
     @DELETE
     @Path("{id}")
-    public void deleteById(@PathParam("id") int id){
-        userRepositoryOrcl.delete(id);
+    public Response deleteById(@PathParam("id") int id) {
+        try {
+            userRepositoryOrcl.delete(id);
+            return Response.ok().build();
+        } catch (Exception e) {
+            return Response.status(Response.Status.BAD_REQUEST).entity(e.getMessage()).build();
+        }
+
     }
 
 

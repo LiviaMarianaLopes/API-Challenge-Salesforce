@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class UserRepositoryOrcl implements _BaseRepository <User>{
+public class UserRepositoryOrcl implements _BaseRepository<User> {
     DatabaseConfig oracleDatabaseConnection;
     public static final String ID_COLUMN = "ID";
     public static final String NOME_COLUMN = "NOME";
@@ -20,7 +20,7 @@ public class UserRepositoryOrcl implements _BaseRepository <User>{
     public static final String SENHA_COLUMN = "SENHA";
     public static final String TELEFONE_COLUMN = "TELEFONE";
     public static final String EMPRESA_COLUMN = "EMPRESA";
-    public static  final String TB_NAME = "USERS";
+    public static final String TB_NAME = "USERS";
 
     public boolean verificarLogin(Login login) {
         for (User l : readAll()) {
@@ -37,6 +37,7 @@ public class UserRepositoryOrcl implements _BaseRepository <User>{
         }
         return false;
     }
+
     public User saberLogin(Login login) {
         for (User l : readAll()) {
 
@@ -55,7 +56,7 @@ public class UserRepositoryOrcl implements _BaseRepository <User>{
 
     // Recupera um usuário pelo ID
     public Optional<User> getUserById(int id) {
-        String selectSQL = "SELECT * FROM "+TB_NAME+" WHERE id = ?";
+        String selectSQL = "SELECT * FROM " + TB_NAME + " WHERE id = ?";
         User user = null;
 
         try (Connection conn = DatabaseConfig.getConnection();
@@ -65,7 +66,7 @@ public class UserRepositoryOrcl implements _BaseRepository <User>{
             ResultSet rs = pstmt.executeQuery();
 
             if (rs.next()) {
-                 return Optional.of(new User(rs.getInt("id"),rs.getString("nome"),
+                return Optional.of(new User(rs.getInt("id"), rs.getString("nome"),
                         rs.getString("email"),
                         rs.getString("senha"),
                         rs.getString("telefone"),
@@ -82,11 +83,11 @@ public class UserRepositoryOrcl implements _BaseRepository <User>{
     @Override
     public void create(User entity) {
 
-        try(var connection = oracleDatabaseConnection.getConnection();
+        try (var connection = oracleDatabaseConnection.getConnection();
 
-            var statement = connection.prepareStatement(
-                    "INSERT INTO "+TB_NAME +" (%s, %s, %s, %s, %s) VALUES (?, ?, ?, ?, ?)"
-                            .formatted(NOME_COLUMN, EMAIL_COLUMN, SENHA_COLUMN, TELEFONE_COLUMN, EMPRESA_COLUMN))){
+             var statement = connection.prepareStatement(
+                     "INSERT INTO " + TB_NAME + " (%s, %s, %s, %s, %s) VALUES (?, ?, ?, ?, ?)"
+                             .formatted(NOME_COLUMN, EMAIL_COLUMN, SENHA_COLUMN, TELEFONE_COLUMN, EMPRESA_COLUMN))) {
 
             statement.setString(1, entity.getNome());
             statement.setString(2, entity.getEmail());
@@ -95,16 +96,16 @@ public class UserRepositoryOrcl implements _BaseRepository <User>{
             statement.setString(5, entity.getEmpresa());
             var result = statement.executeUpdate();
             System.out.println(("Insert realizado com sucesso, linhas afetadas: " + result));
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             System.out.println(("Erro ao inserir tarefa: " + e.getMessage()));
         }
 
     }
+
     @Override
     public List<User> readAll() {
         List<User> userList = new ArrayList<>();
-        String selectAllSQL = "SELECT * FROM "+TB_NAME+" ORDER BY ID";
+        String selectAllSQL = "SELECT * FROM " + TB_NAME + " ORDER BY ID";
 
         try (Connection conn = DatabaseConfig.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(selectAllSQL)) {
@@ -116,7 +117,7 @@ public class UserRepositoryOrcl implements _BaseRepository <User>{
                         rs.getString("email"),
                         rs.getString("senha"),
                         rs.getString("telefone"),
-                        rs.getString("empresa")) ;
+                        rs.getString("empresa"));
                 userList.add(user);
             }
 
@@ -128,7 +129,7 @@ public class UserRepositoryOrcl implements _BaseRepository <User>{
 
     @Override
     public void update(int id, User entity) {
-        String updateSQL = "UPDATE "+TB_NAME+" SET nome = ?, email = ?, senha = ?, telefone = ?, empresa = ?  WHERE id = ?";
+        String updateSQL = "UPDATE " + TB_NAME + " SET nome = ?, email = ?, senha = ?, telefone = ?, empresa = ?  WHERE id = ?";
 
         try (Connection conn = DatabaseConfig.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(updateSQL)) {
@@ -151,7 +152,7 @@ public class UserRepositoryOrcl implements _BaseRepository <User>{
 
     @Override
     public void delete(int id) {
-        String deleteSQL = "DELETE FROM "+TB_NAME+" WHERE id = ?";
+        String deleteSQL = "DELETE FROM " + TB_NAME + " WHERE id = ?";
 
         try (Connection conn = DatabaseConfig.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(deleteSQL)) {

@@ -12,7 +12,7 @@ public class User extends _BaseEntity {
     public User() {
     }
 
-    public User(int id, String nome, String email, String senha, String telefone, String empresa ){
+    public User(int id, String nome, String email, String senha, String telefone, String empresa) {
         super(id);
         this.nome = nome;
         this.email = email;
@@ -30,7 +30,6 @@ public class User extends _BaseEntity {
         this.empresa = empresa;
 
     }
-
 
 
     public String getNome() {
@@ -76,7 +75,7 @@ public class User extends _BaseEntity {
 
 
     // método para vwlidar informações de um user
-    public Map<Boolean, ArrayList<String>> validate(){
+    public Map<Boolean, ArrayList<String>> validate() {
         var errors = new ArrayList<String>();
         if (nome == null || nome.isBlank())
             errors.add("O campo nome não pode estar vazio");
@@ -98,6 +97,7 @@ public class User extends _BaseEntity {
                 Map.of(false, errors) :
                 Map.of(true, errors);
     }
+
     //Método para criar um login
     public static User criarLogin(List<User> users) {
 

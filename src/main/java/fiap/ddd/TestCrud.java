@@ -7,10 +7,11 @@ import fiap.ddd.Repositories.UserRepositoryOrcl;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class MainAcessoCrud {
+public class TestCrud {
     public static void main(String[] args) throws IOException {
         menu();
     }
+
     public static void menu() {
         var opcao = 0;
         //Variável para armazenar os Logins cadastrados
@@ -39,7 +40,7 @@ public class MainAcessoCrud {
                     var continuar = 0;
                     if (!users.readAll().isEmpty()) {
                         boolean excluirConta = false;
-                        while (!excluirConta ) {
+                        while (!excluirConta) {
                             //Pega as informações de login
                             System.out.println("Digite seu username ou email cadastrado: ");
                             String username = scanner.nextLine();
@@ -66,7 +67,7 @@ public class MainAcessoCrud {
                                             break;
                                         } else if (escolha == 2) {
                                             userLogado.atualizarLogin(users.readAll());
-                                            users.update(userLogado.getId(),userLogado);
+                                            users.update(userLogado.getId(), userLogado);
                                         } else if (escolha == 3) {
                                             while (true) {
                                                 try {
@@ -84,8 +85,6 @@ public class MainAcessoCrud {
                                                             break;
 
 
-
-
                                                         }
                                                         throw new RuntimeException();
                                                     } else {
@@ -100,7 +99,8 @@ public class MainAcessoCrud {
                                             }
                                         } else {
                                             throw new RuntimeException();
-                                        }break;
+                                        }
+                                        break;
 
                                     } catch (Exception e) {
                                         System.out.println("Digite um número de 1 à 3");
@@ -145,8 +145,6 @@ public class MainAcessoCrud {
 
         }
     }
-
-
 
 
 }

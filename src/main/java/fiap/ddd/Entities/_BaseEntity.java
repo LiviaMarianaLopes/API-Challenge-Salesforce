@@ -2,8 +2,7 @@ package fiap.ddd.Entities;
 
 import java.util.StringJoiner;
 
-public abstract class _BaseEntity
-         {
+public abstract class _BaseEntity {
     private int id;
 
     public _BaseEntity() {
